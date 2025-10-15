@@ -1,6 +1,9 @@
 package calculator.controller;
 
+import calculator.domain.CustomDelimiter;
 import calculator.view.InputView;
+
+import java.util.Optional;
 
 public class CalculatorController {
 
@@ -12,10 +15,15 @@ public class CalculatorController {
 
     public void run() {
         String inputStr = inputStr();
+        Optional<CustomDelimiter> customDelimiter = getCustomRegexFromInputStr(inputStr);
     }
 
     private String inputStr() {
         return inputView.inputStr();
+    }
+
+    private Optional<CustomDelimiter> getCustomRegexFromInputStr(String inputStr) {
+        return CustomDelimiter.extractCustomDelimiter(inputStr);
     }
 
 }
