@@ -22,4 +22,12 @@ public class Numbers {
             throw new IllegalArgumentException("number must not be empty");
     }
 
+    public Long getTotalSum() {
+        Long sum = 0L;
+        for (Number number : numbers)
+            sum += number.getNumber();
+
+        return sum;
+    }
+
 }

@@ -33,4 +33,6 @@ public class Number {
         return true;
     }
 
+    public Long getNumber() { return number;}
+
 }

@@ -29,6 +29,8 @@ public class CalculatorController {
         List<String> numberStrList = delimiterService.splitNumbersStrWithDelimiters(extractedInput, defaultDelimiters);
 
         Numbers numbers = new Numbers(numberStrList);
+
+        Long sum = numbers.getTotalSum();
     }
 
     private String inputStr() {
