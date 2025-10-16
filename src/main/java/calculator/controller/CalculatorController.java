@@ -4,6 +4,7 @@ import calculator.constant.DelimiterConstant;
 import calculator.domain.delimiter.*;
 import calculator.domain.number.Numbers;
 import calculator.view.InputView;
+import calculator.view.OutputView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,11 +12,13 @@ import java.util.List;
 public class CalculatorController {
 
     private final InputView inputView;
+    private final OutputView outputView;
     private final DelimiterService delimiterService;
     private final ExtractCustomDelimiterService extractCustomDelimiterService;
 
     public CalculatorController() {
         this.inputView = new InputView();
+        this.outputView = new OutputView();
         this.delimiterService = new DelimiterService();
         this.extractCustomDelimiterService = new ExtractCustomDelimiterService();
     }
@@ -31,6 +34,8 @@ public class CalculatorController {
         Numbers numbers = new Numbers(numberStrList);
 
         Long sum = numbers.getTotalSum();
+
+        printResult(sum);
     }
 
     private String inputStr() {
@@ -46,6 +51,10 @@ public class CalculatorController {
         delimiters.add(new DelimiterImpl(DelimiterConstant.DEFAULT_DELIMITER_COLON));
         delimiters.add(new DelimiterImpl(DelimiterConstant.DEFAULT_DELIMITER_COMMA));
         return delimiters;
+    }
+
+    private void printResult(Long sum) {
+        outputView.printResult(sum);
     }
 
 }
