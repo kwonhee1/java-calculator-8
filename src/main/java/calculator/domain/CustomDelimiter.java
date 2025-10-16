@@ -17,16 +17,17 @@ public class CustomDelimiter {
         this.customDelimiter = customDelimiter;
     }
 
-    public static Optional<CustomDelimiter> extractCustomDelimiter(String inputStr) {
+    public static ExtractedInput extractCustomDelimiter(String inputStr) {
         String customDelimiter;
 
         Matcher matcher = pattern.matcher(inputStr);
         if (!matcher.matches())
-            return Optional.empty();
+            return ExtractedInput.withoutCustomDelimiter(inputStr);
 
         customDelimiter = matcher.group(1);
+        String numberStr = inputStr.substring(matcher.end());
 
-        return Optional.of(new CustomDelimiter(customDelimiter));
+        return ExtractedInput.withCustomDelimiter(new CustomDelimiter(customDelimiter), numberStr);
     }
 
     private void validateIsNotEmpty(String customDelimiter) {
