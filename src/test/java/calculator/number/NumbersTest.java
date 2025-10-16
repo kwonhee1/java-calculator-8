@@ -35,4 +35,13 @@ public class NumbersTest {
         Assertions.assertThrows(IllegalArgumentException.class, () -> new Numbers(emptyNumberStrList));
         Assertions.assertThrows(IllegalArgumentException.class, () -> new Numbers(nullNumberStrList));
     }
+
+    @Test
+    public void getTotalSumTest() {
+        Numbers numbers = new Numbers(List.of("1", "2", "12"));
+
+        long totalSum = numbers.getTotalSum();
+
+        Assertions.assertEquals(15L, totalSum);
+    }
 }
