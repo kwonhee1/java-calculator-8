@@ -2,6 +2,7 @@ package calculator.controller;
 
 import calculator.constant.DelimiterConstant;
 import calculator.domain.delimiter.*;
+import calculator.domain.number.Numbers;
 import calculator.view.InputView;
 
 import java.util.ArrayList;
@@ -26,6 +27,8 @@ public class CalculatorController {
         List<Delimiter> defaultDelimiters = makeDefaultDelimiters();
 
         List<String> numberStrList = delimiterService.splitNumbersStrWithDelimiters(extractedInput, defaultDelimiters);
+
+        Numbers numbers = new Numbers(numberStrList);
     }
 
     private String inputStr() {
