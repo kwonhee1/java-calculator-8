@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Field;
+import java.util.List;
 
 public class ExtractCustomDelimiterServiceTest {
 
@@ -37,7 +38,7 @@ public class ExtractCustomDelimiterServiceTest {
     }
 
     private String getExtractCustomDelimiter(String delimiterRegex) throws NoSuchFieldException, IllegalAccessException {
-        String inputStr = "//"+delimiterRegex+"\n";
+        String inputStr = "//"+delimiterRegex+"\n123";
 
         Field delimiterRegexField = DelimiterImpl.class.getDeclaredField("delimiterRegex");
         delimiterRegexField.setAccessible(true);
@@ -49,6 +50,18 @@ public class ExtractCustomDelimiterServiceTest {
 
         DelimiterImpl delimiter = (DelimiterImpl) result.getCustomDelimiter();
         return (String) delimiterRegexField.get(delimiter);
+    }
+
+    @Test
+    public void extractNumberStrTest() {
+        String delimiterRegex = "ab";
+        String numberStr = "1ab2ab3";
+        String inputStr = "//"+delimiterRegex+"\n"+numberStr;
+
+        ExtractedInput result = extractCustomDelimiterService.extractCustomDelimiter(inputStr);
+
+        Assertions.assertTrue(result.hasCustomDelimiter());
+        org.assertj.core.api.Assertions.assertThat(result.getNumbersStr()).isEqualTo(numberStr);
     }
 
 }
