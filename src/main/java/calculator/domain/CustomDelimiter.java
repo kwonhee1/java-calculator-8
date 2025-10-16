@@ -7,8 +7,6 @@ import java.util.regex.Pattern;
 
 public class CustomDelimiter {
 
-    private static final Pattern pattern = Pattern.compile(DelimiterConstant.CUSTOM_DELIMITER_REGEX);
-
     private final String customDelimiter;
 
     private CustomDelimiter(String customDelimiter) {
@@ -17,13 +15,13 @@ public class CustomDelimiter {
     }
 
     public static ExtractedInput extractCustomDelimiter(String inputStr) {
-        String customDelimiter;
+        final Pattern pattern = Pattern.compile(DelimiterConstant.CUSTOM_DELIMITER_REGEX);
 
         Matcher matcher = pattern.matcher(inputStr);
         if (!matcher.matches())
             return ExtractedInput.withoutCustomDelimiter(inputStr);
 
-        customDelimiter = matcher.group(1);
+        String customDelimiter = matcher.group(1);
         String numberStr = inputStr.substring(matcher.end());
 
         return ExtractedInput.withCustomDelimiter(new CustomDelimiter(customDelimiter), numberStr);
