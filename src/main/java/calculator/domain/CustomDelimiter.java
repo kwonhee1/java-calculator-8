@@ -21,10 +21,10 @@ public class CustomDelimiter {
         String customDelimiter;
 
         Matcher matcher = pattern.matcher(inputStr);
-        if (!matcher.find())
+        if (!matcher.matches())
             return Optional.empty();
 
-        customDelimiter = matcher.group();
+        customDelimiter = matcher.group(1);
 
         return Optional.of(new CustomDelimiter(customDelimiter));
     }
