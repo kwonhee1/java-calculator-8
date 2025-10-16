@@ -30,11 +30,10 @@ public class CalculatorController {
         String inputStr = inputStr();
 
         ExtractedInput extractedInput = getCustomRegexFromInputStr(inputStr);
-        List<Delimiter> defaultDelimiters = makeDefaultDelimiters();
 
-        List<String> numberStrList = delimiterService.splitNumbersStrWithDelimiters(extractedInput, defaultDelimiters);
+        List<String> numberStrList = splitInputStrByDelimiters(extractedInput);
 
-        Numbers numbers = new Numbers(numberStrList);
+        Numbers numbers = convertToNumbers(numberStrList);
 
         Long sum = getTotalSum(numbers);
 
@@ -49,11 +48,20 @@ public class CalculatorController {
         return extractCustomDelimiterService.extractCustomDelimiter(inputStr);
     }
 
+    private List<String> splitInputStrByDelimiters(ExtractedInput extractedInput) {
+        List<Delimiter> defaultDelimiters = makeDefaultDelimiters();
+        return delimiterService.splitNumbersStrWithDelimiters(extractedInput, defaultDelimiters);
+    }
+
     private List<Delimiter> makeDefaultDelimiters() {
         List<Delimiter> delimiters = new ArrayList<>();
         delimiters.add(new DelimiterImpl(DelimiterConstant.DEFAULT_DELIMITER_COLON));
         delimiters.add(new DelimiterImpl(DelimiterConstant.DEFAULT_DELIMITER_COMMA));
         return delimiters;
+    }
+
+    private Numbers convertToNumbers(List<String> numberStrList) {
+        return new Numbers(numberStrList);
     }
 
     private Long getTotalSum(Numbers numbers) {
