@@ -1,5 +1,8 @@
-package calculator.domain;
+package calculator.delimiter;
 
+import calculator.domain.delimiter.CustomDelimiter;
+import calculator.domain.delimiter.DelimiterImpl;
+import calculator.domain.delimiter.ExtractedInput;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -33,29 +36,20 @@ public class CustomDelimiterTest {
         Assertions.assertThrows(IllegalArgumentException.class, ()->getExtractCustomDelimiter(nothing));
     }
 
-    private String getExtractCustomDelimiter(String delimiter) throws NoSuchFieldException, IllegalAccessException {
-        String inputStr = "//"+delimiter+"\n";
-        Field delimiterField = CustomDelimiter.class.getDeclaredField("customDelimiter");
-        delimiterField.setAccessible(true);
+    private String getExtractCustomDelimiter(String delimiterRegex) throws NoSuchFieldException, IllegalAccessException {
+        String inputStr = "//"+delimiterRegex+"\n";
+        Field customDelimiterField = CustomDelimiter.class.getDeclaredField("customDelimiter");
+        Field delimiterRegexField = DelimiterImpl.class.getDeclaredField("delimiterRegex");
+        customDelimiterField.setAccessible(true);
+        delimiterRegexField.setAccessible(true);
 
         ExtractedInput customDelimiter = CustomDelimiter.extractCustomDelimiter(inputStr);
 
         if(!customDelimiter.hasCustomDelimiter())
             throw new IllegalArgumentException("delimiter not found");
 
-        return (String) delimiterField.get(customDelimiter.getCustomDelimiter());
+        DelimiterImpl delimiter = (DelimiterImpl) customDelimiterField.get(customDelimiter.getCustomDelimiter());
+        return (String) delimiterRegexField.get(delimiter);
     }
 
-    @Test
-    public void cannotGenerateEmptyDelimiter() throws NoSuchMethodException {
-        Constructor<CustomDelimiter> constructor = CustomDelimiter.class.getDeclaredConstructor(String.class);
-        constructor.setAccessible(true);
-
-        String nullDelimiter = null;
-        String emptyDelimiter = "";
-
-        // reflection.Constructor.newInstance(args...) : if throw Error at constructor -> throw new InvocationTagetException(Error);
-        Assertions.assertThrows(InvocationTargetException.class, ()->constructor.newInstance(nullDelimiter));
-        Assertions.assertThrows(InvocationTargetException.class, ()->constructor.newInstance(emptyDelimiter));
-    }
 }

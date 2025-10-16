@@ -1,14 +1,14 @@
-package calculator.domain;
+package calculator.domain.delimiter;
 
 import java.util.Optional;
 
 public class ExtractedInput {
     private final Optional<CustomDelimiter> customDelimiter;
-    private final String numberStr;
+    private final String numbersStr;
 
-    private ExtractedInput(Optional<CustomDelimiter> customDelimiter, String numberStr) {
+    private ExtractedInput(Optional<CustomDelimiter> customDelimiter, String numbersStr) {
         this.customDelimiter = customDelimiter;
-        this.numberStr = numberStr;
+        this.numbersStr = numbersStr;
     }
 
     public static ExtractedInput withCustomDelimiter(CustomDelimiter customDelimiter, String numberStr) {
@@ -30,7 +30,7 @@ public class ExtractedInput {
         return customDelimiter.get();
     }
 
-    public String getNumberStr() {
-        return numberStr;
+    public String getNumbersStr() {
+        return numbersStr;
     }
 }
