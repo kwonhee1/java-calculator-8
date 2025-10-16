@@ -15,7 +15,7 @@ public class ExtractCustomDelimiterService {
             return ExtractedInput.withoutCustomDelimiter(inputStr);
 
         Delimiter customDelimiter = new DelimiterImpl(matcher.group(1));
-        String numbersStr = inputStr.substring(matcher.end());
+        String numbersStr = matcher.group(2);
 
         return ExtractedInput.withCustomDelimiter(customDelimiter, numbersStr);
     }
