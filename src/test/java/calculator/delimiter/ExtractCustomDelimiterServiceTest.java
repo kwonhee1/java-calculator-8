@@ -1,16 +1,16 @@
 package calculator.delimiter;
 
-import calculator.domain.delimiter.CustomDelimiter;
 import calculator.domain.delimiter.DelimiterImpl;
+import calculator.domain.delimiter.ExtractCustomDelimiterService;
 import calculator.domain.delimiter.ExtractedInput;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
 
-public class CustomDelimiterTest {
+public class ExtractCustomDelimiterServiceTest {
+
+    private final ExtractCustomDelimiterService extractCustomDelimiterService = new ExtractCustomDelimiterService();
 
     @Test
     void extractCustomDelimiterTest() throws NoSuchFieldException, IllegalAccessException {
@@ -38,17 +38,16 @@ public class CustomDelimiterTest {
 
     private String getExtractCustomDelimiter(String delimiterRegex) throws NoSuchFieldException, IllegalAccessException {
         String inputStr = "//"+delimiterRegex+"\n";
-        Field customDelimiterField = CustomDelimiter.class.getDeclaredField("customDelimiter");
+
         Field delimiterRegexField = DelimiterImpl.class.getDeclaredField("delimiterRegex");
-        customDelimiterField.setAccessible(true);
         delimiterRegexField.setAccessible(true);
 
-        ExtractedInput customDelimiter = CustomDelimiter.extractCustomDelimiter(inputStr);
+        ExtractedInput result = extractCustomDelimiterService.extractCustomDelimiter(inputStr);
 
-        if(!customDelimiter.hasCustomDelimiter())
+        if(!result.hasCustomDelimiter())
             throw new IllegalArgumentException("delimiter not found");
 
-        DelimiterImpl delimiter = (DelimiterImpl) customDelimiterField.get(customDelimiter.getCustomDelimiter());
+        DelimiterImpl delimiter = (DelimiterImpl) result.getCustomDelimiter();
         return (String) delimiterRegexField.get(delimiter);
     }
 
