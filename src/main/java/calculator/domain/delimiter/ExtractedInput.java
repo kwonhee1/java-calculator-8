@@ -3,15 +3,15 @@ package calculator.domain.delimiter;
 import java.util.Optional;
 
 public class ExtractedInput {
-    private final Optional<CustomDelimiter> customDelimiter;
+    private final Optional<Delimiter> customDelimiter;
     private final String numbersStr;
 
-    private ExtractedInput(Optional<CustomDelimiter> customDelimiter, String numbersStr) {
+    private ExtractedInput(Optional<Delimiter> customDelimiter, String numbersStr) {
         this.customDelimiter = customDelimiter;
         this.numbersStr = numbersStr;
     }
 
-    public static ExtractedInput withCustomDelimiter(CustomDelimiter customDelimiter, String numberStr) {
+    public static ExtractedInput withCustomDelimiter(Delimiter customDelimiter, String numberStr) {
         return new ExtractedInput(Optional.of(customDelimiter), numberStr);
     }
 
@@ -23,7 +23,7 @@ public class ExtractedInput {
         return customDelimiter.isPresent();
     }
 
-    public CustomDelimiter getCustomDelimiter() {
+    public Delimiter getCustomDelimiter() {
         if(!hasCustomDelimiter())
             throw new IllegalStateException("custom delimiter not found");
 

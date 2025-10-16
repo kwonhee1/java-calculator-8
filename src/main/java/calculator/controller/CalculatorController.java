@@ -11,10 +11,12 @@ public class CalculatorController {
 
     private final InputView inputView;
     private final DelimiterService delimiterService;
+    private final ExtractCustomDelimiterService extractCustomDelimiterService;
 
     public CalculatorController() {
         this.inputView = new InputView();
         this.delimiterService = new DelimiterService();
+        this.extractCustomDelimiterService = new ExtractCustomDelimiterService();
     }
 
     public void run() {
@@ -31,7 +33,7 @@ public class CalculatorController {
     }
 
     private ExtractedInput getCustomRegexFromInputStr(String inputStr) {
-        return CustomDelimiter.extractCustomDelimiter(inputStr);
+        return extractCustomDelimiterService.extractCustomDelimiter(inputStr);
     }
 
     private List<Delimiter> makeDefaultDelimiters() {
