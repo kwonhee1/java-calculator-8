@@ -19,8 +19,15 @@ public class ExtractedInput {
         return new ExtractedInput(Optional.empty(), numberStr);
     }
 
-    public Optional<CustomDelimiter> getCustomDelimiter() {
-        return customDelimiter;
+    public boolean hasCustomDelimiter() {
+        return customDelimiter.isPresent();
+    }
+
+    public CustomDelimiter getCustomDelimiter() {
+        if(!hasCustomDelimiter())
+            throw new IllegalStateException("custom delimiter not found");
+
+        return customDelimiter.get();
     }
 
     public String getNumberStr() {

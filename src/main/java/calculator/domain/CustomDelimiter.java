@@ -2,7 +2,6 @@ package calculator.domain;
 
 import calculator.constant.DelimiterConstant;
 
-import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 

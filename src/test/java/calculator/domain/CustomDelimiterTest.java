@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
-import java.util.Optional;
 
 public class CustomDelimiterTest {
 
@@ -39,12 +38,12 @@ public class CustomDelimiterTest {
         Field delimiterField = CustomDelimiter.class.getDeclaredField("customDelimiter");
         delimiterField.setAccessible(true);
 
-        Optional<CustomDelimiter> customDelimiter = CustomDelimiter.extractCustomDelimiter(inputStr);
+        ExtractedInput customDelimiter = CustomDelimiter.extractCustomDelimiter(inputStr);
 
-        if(customDelimiter.isEmpty())
+        if(!customDelimiter.hasCustomDelimiter())
             throw new IllegalArgumentException("delimiter not found");
 
-        return (String) delimiterField.get(customDelimiter.get());
+        return (String) delimiterField.get(customDelimiter.getCustomDelimiter());
     }
 
     @Test
