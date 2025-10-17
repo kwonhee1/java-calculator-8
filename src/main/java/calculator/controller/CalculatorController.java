@@ -23,7 +23,7 @@ public class CalculatorController {
         this.outputView = new OutputView();
         this.splitService = new SplitService();
         this.calculatorService = new CalculatorService();
-        this.extractCustomDelimiterService = new ExtractCustomDelimiterService();
+        this.extractCustomDelimiterService = new ExtractCustomDelimiterService(DelimiterConstant.CUSTOM_DELIMITER_REGEX);
     }
 
     public void run() {

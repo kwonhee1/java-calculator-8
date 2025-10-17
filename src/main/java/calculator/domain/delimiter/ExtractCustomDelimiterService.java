@@ -1,13 +1,15 @@
 package calculator.domain.delimiter;
 
-import calculator.constant.DelimiterConstant;
-
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ExtractCustomDelimiterService {
 
-    private final Pattern pattern = Pattern.compile(DelimiterConstant.CUSTOM_DELIMITER_REGEX);
+    private final Pattern pattern;
+
+    public ExtractCustomDelimiterService(String customDelimiterRegex) {
+        this.pattern = Pattern.compile(customDelimiterRegex);
+    }
 
     public ExtractedInput extractCustomDelimiter(String inputStr) {
         Matcher matcher = pattern.matcher(inputStr);

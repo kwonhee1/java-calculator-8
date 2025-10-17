@@ -1,5 +1,6 @@
 package calculator.delimiter;
 
+import calculator.constant.DelimiterConstant;
 import calculator.domain.delimiter.DelimiterImpl;
 import calculator.domain.delimiter.ExtractCustomDelimiterService;
 import calculator.domain.delimiter.ExtractedInput;
@@ -11,7 +12,8 @@ import java.util.List;
 
 public class ExtractCustomSplitServiceTest {
 
-    private final ExtractCustomDelimiterService extractCustomDelimiterService = new ExtractCustomDelimiterService();
+    private final ExtractCustomDelimiterService extractCustomDelimiterService = new ExtractCustomDelimiterService(
+            DelimiterConstant.CUSTOM_DELIMITER_REGEX);
 
     @Test
     void extractCustomDelimiterTest() throws NoSuchFieldException, IllegalAccessException {
