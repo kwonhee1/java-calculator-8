@@ -11,7 +11,7 @@ public class SplitService {
         if(!input.hasCustomDelimiter())
             return splitNumbersStrWithDelimiters(input.getNumbersStr(), defaultDelimiter);
 
-        List<Delimiter> delimiters = defaultDelimiter;
+        List<Delimiter> delimiters = List.copyOf(defaultDelimiter);
         delimiters.add(input.getCustomDelimiter());
 
         return splitNumbersStrWithDelimiters(input.getNumbersStr(), delimiters);
