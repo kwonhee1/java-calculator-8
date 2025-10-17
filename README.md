@@ -21,6 +21,7 @@
 - [ ] 불필요한 import문이 남아있는지 확인
 
 # 고민 사항
+- \n, \t, \. 등등 escape 문자에도 잘 작동하게 하는 방법은 무엇인지?
 - Numbers(domain class), Number(domain class) 생성자에서 앞 뒤로 비슷한 validate를 실행하는 것이 적절한가?
 - ExtractedInput (vo class)의 이름이 적절한가?
 - SplitService의 public splitNumbersStrDelimiters함수 (조립함수)가 service에 존재하는 것이 적절한가?
