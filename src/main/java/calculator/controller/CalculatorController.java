@@ -29,9 +29,9 @@ public class CalculatorController {
     public void run() {
         String inputStr = inputStr();
 
-        ExtractedInput extractedInput = getCustomRegexFromInputStr(inputStr);
+        ExtractedInput extractedInputStr = extractCustomRegexFromInputStr(inputStr);
 
-        List<String> numberStrList = splitInputStrByDelimiters(extractedInput);
+        List<String> numberStrList = splitInputStrByDelimiters(extractedInputStr);
 
         Numbers numbers = convertToNumbers(numberStrList);
 
@@ -42,7 +42,7 @@ public class CalculatorController {
         return inputView.inputStr();
     }
 
-    private ExtractedInput getCustomRegexFromInputStr(String inputStr) {
+    private ExtractedInput extractCustomRegexFromInputStr(String inputStr) {
         return extractCustomDelimiterService.extractCustomDelimiter(inputStr);
     }
 
