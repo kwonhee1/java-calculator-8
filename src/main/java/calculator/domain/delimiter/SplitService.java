@@ -1,5 +1,6 @@
 package calculator.domain.delimiter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SplitService {
@@ -11,7 +12,8 @@ public class SplitService {
         if(!input.hasCustomDelimiter())
             return splitNumbersStrWithDelimiters(input.getNumbersStr(), defaultDelimiter);
 
-        List<Delimiter> delimiters = defaultDelimiter;
+        List<Delimiter> delimiters = new ArrayList<>();
+        delimiters.addAll(defaultDelimiter);
         delimiters.add(input.getCustomDelimiter());
 
         return splitNumbersStrWithDelimiters(input.getNumbersStr(), delimiters);
