@@ -14,14 +14,14 @@ public class CalculatorController {
 
     private final InputView inputView;
     private final OutputView outputView;
-    private final DelimiterService delimiterService;
+    private final SplitService splitService;
     private final CalculatorService calculatorService;
     private final ExtractCustomDelimiterService extractCustomDelimiterService;
 
     public CalculatorController() {
         this.inputView = new InputView();
         this.outputView = new OutputView();
-        this.delimiterService = new DelimiterService();
+        this.splitService = new SplitService();
         this.calculatorService = new CalculatorService();
         this.extractCustomDelimiterService = new ExtractCustomDelimiterService();
     }
@@ -48,7 +48,7 @@ public class CalculatorController {
 
     private List<String> splitInputStrByDelimiters(ExtractedInput extractedInput) {
         List<Delimiter> defaultDelimiters = makeDefaultDelimiters();
-        return delimiterService.splitNumbersStrWithDelimiters(extractedInput, defaultDelimiters);
+        return splitService.splitNumbersStrWithDelimiters(extractedInput, defaultDelimiters);
     }
 
     private List<Delimiter> makeDefaultDelimiters() {

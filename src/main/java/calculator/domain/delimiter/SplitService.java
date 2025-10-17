@@ -1,9 +1,8 @@
 package calculator.domain.delimiter;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class DelimiterService {
+public class SplitService {
 
     public List<String> splitNumbersStrWithDelimiters(
             ExtractedInput input,

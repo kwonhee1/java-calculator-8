@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 import java.lang.reflect.Field;
 import java.util.List;
 
-public class ExtractCustomDelimiterServiceTest {
+public class ExtractCustomSplitServiceTest {
 
     private final ExtractCustomDelimiterService extractCustomDelimiterService = new ExtractCustomDelimiterService();
 
