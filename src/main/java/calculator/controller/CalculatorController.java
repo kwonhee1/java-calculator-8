@@ -35,9 +35,7 @@ public class CalculatorController {
 
         Numbers numbers = convertToNumbers(numberStrList);
 
-        Long sum = getTotalSum(numbers);
-
-        printResult(sum);
+        getTotalSumAndPrintResult(numbers);
     }
 
     private String inputStr() {
@@ -64,12 +62,9 @@ public class CalculatorController {
         return new Numbers(numberStrList);
     }
 
-    private Long getTotalSum(Numbers numbers) {
-        return calculatorService.getTotalSum(numbers);
-    }
-
-    private void printResult(Long sum) {
-        outputView.printResult(sum);
+    private void getTotalSumAndPrintResult(Numbers numbers) {
+        Long totalSum = calculatorService.getTotalSum(numbers);
+        outputView.printResult(totalSum);
     }
 
 }
