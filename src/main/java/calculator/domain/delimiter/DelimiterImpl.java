@@ -19,7 +19,7 @@ public class DelimiterImpl implements Delimiter {
     }
 
     private String toEscapeRegexIfEscapeDelimiter(String delimiterRegex) {
-        return EscapeCharacter.ESCAPE.replaceAllEscape(delimiterRegex);
+        return EscapeCharacter.replaceAllEscape(delimiterRegex);
     }
 
     @Override

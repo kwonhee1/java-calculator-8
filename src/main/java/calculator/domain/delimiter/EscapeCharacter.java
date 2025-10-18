@@ -4,6 +4,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public enum EscapeCharacter {
+    DOT("(\\.)", "\\."),
     ESCAPE("(\\\\)", "\\\\"),
     ;
 
@@ -15,7 +16,13 @@ public enum EscapeCharacter {
         this.replacement = replacement;
     }
 
-    public String replaceAllEscape(String input) {
+    public static String replaceAllEscape(String input) {
+        input = EscapeCharacter.ESCAPE.replaceEscapeToReplacement(input);
+        input = EscapeCharacter.DOT.replaceEscapeToReplacement(input);
+        return input;
+    }
+
+    public String replaceEscapeToReplacement(String input) {
         Matcher matcher = escapeCharacterPattern.matcher(input);
 
         int start = 0;
