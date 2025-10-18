@@ -29,13 +29,13 @@ public class ExtractCustomSplitServiceTest {
         String onlySpace = "  ";
         String onlySlash1 = "/";
         String onlySlash2 = "//";
-        String onlyNewLine = "\n";
+        String onlyDot = ".";
         String nothing = "";
 
         Assertions.assertEquals(onlySpace, getExtractCustomDelimiter(onlySpace));
         Assertions.assertEquals(onlySlash1, getExtractCustomDelimiter(onlySlash1));
-        //Assertions.assertEquals(onlySlash2, getExtractCustomDelimiter(onlySlash2));
-        //Assertions.assertEquals(onlyNewLine, getExtractCustomDelimiter(onlyNewLine));
+        Assertions.assertEquals(onlySlash2, getExtractCustomDelimiter(onlySlash2));
+        Assertions.assertEquals(onlyDot, getExtractCustomDelimiter(onlyDot));
         Assertions.assertThrows(IllegalArgumentException.class, ()->getExtractCustomDelimiter(nothing));
     }
 
