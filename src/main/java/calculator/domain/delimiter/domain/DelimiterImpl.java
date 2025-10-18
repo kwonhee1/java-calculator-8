@@ -1,5 +1,6 @@
-package calculator.domain.delimiter;
+package calculator.domain.delimiter.domain;
 
+import calculator.domain.delimiter.EscapeCharacter;
 import java.util.ArrayList;
 import java.util.List;
 

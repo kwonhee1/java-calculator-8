@@ -1,6 +1,6 @@
 package calculator.delimiter;
 
-import calculator.domain.delimiter.DelimiterImpl;
+import calculator.domain.delimiter.domain.DelimiterImpl;
 import calculator.domain.delimiter.EscapeCharacter;
 import java.util.List;
 import org.assertj.core.api.Assertions;

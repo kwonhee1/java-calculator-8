@@ -1,5 +1,6 @@
-package calculator.domain.delimiter;
+package calculator.domain.delimiter.vo;
 
+import calculator.domain.delimiter.domain.Delimiter;
 import java.util.Optional;
 
 public class ExtractedInput {

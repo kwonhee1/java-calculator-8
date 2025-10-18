@@ -1,4 +1,4 @@
-package calculator.domain.delimiter;
+package calculator.domain.delimiter.domain;
 
 import java.util.List;
 

@@ -1,8 +1,8 @@
 package calculator.delimiter;
 
 import calculator.constant.DelimiterConstant;
-import calculator.domain.delimiter.DelimiterImpl;
-import calculator.domain.delimiter.Delimiter;
+import calculator.domain.delimiter.domain.DelimiterImpl;
+import calculator.domain.delimiter.domain.Delimiter;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

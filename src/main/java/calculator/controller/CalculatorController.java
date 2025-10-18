@@ -2,7 +2,11 @@ package calculator.controller;
 
 import calculator.constant.DelimiterConstant;
 import calculator.domain.calculator.CalculatorService;
-import calculator.domain.delimiter.*;
+import calculator.domain.delimiter.domain.Delimiter;
+import calculator.domain.delimiter.domain.DelimiterImpl;
+import calculator.domain.delimiter.service.ExtractCustomDelimiterService;
+import calculator.domain.delimiter.service.SplitService;
+import calculator.domain.delimiter.vo.ExtractedInput;
 import calculator.domain.number.Numbers;
 import calculator.view.InputView;
 import calculator.view.OutputView;

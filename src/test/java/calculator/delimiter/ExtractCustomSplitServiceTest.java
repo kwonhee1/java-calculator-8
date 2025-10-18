@@ -1,14 +1,13 @@
 package calculator.delimiter;
 
 import calculator.constant.DelimiterConstant;
-import calculator.domain.delimiter.DelimiterImpl;
-import calculator.domain.delimiter.ExtractCustomDelimiterService;
-import calculator.domain.delimiter.ExtractedInput;
+import calculator.domain.delimiter.domain.DelimiterImpl;
+import calculator.domain.delimiter.service.ExtractCustomDelimiterService;
+import calculator.domain.delimiter.vo.ExtractedInput;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.lang.reflect.Field;
-import java.util.List;
 
 public class ExtractCustomSplitServiceTest {
 
