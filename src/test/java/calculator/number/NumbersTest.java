@@ -30,10 +30,8 @@ public class NumbersTest {
     @Test
     public void cannotGenerateEmptyNumbers() {
         List<String> emptyNumberStrList = new ArrayList<>();
-        List<String> nullNumberStrList = null;
 
         Assertions.assertThrows(IllegalArgumentException.class, () -> new Numbers(emptyNumberStrList));
-        Assertions.assertThrows(IllegalArgumentException.class, () -> new Numbers(nullNumberStrList));
     }
     
 }

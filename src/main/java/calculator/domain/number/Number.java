@@ -5,19 +5,13 @@ public class Number {
     private final Long number;
 
     public Number(String numberStr) {
-        validateIsNotEmpty(numberStr);
         number = Long.parseLong(numberStr);
         validateIsPositive(number);
     }
 
-    private void validateIsNotEmpty(String numberStr) {
-        if (numberStr==null || numberStr.isEmpty())
-            throw new IllegalArgumentException("Number cna not be empty");
-    }
-
     private void validateIsPositive(Long number) {
         if (number <= 0)
-            throw new IllegalArgumentException("Number must be positive");
+            throw new IllegalArgumentException("잘못된 입력입니다.");
     }
 
     @Override
