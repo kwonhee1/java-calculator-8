@@ -1,6 +1,6 @@
 package calculator.domain.delimiter.domain;
 
-import calculator.domain.delimiter.EscapeCharacter;
+import calculator.domain.delimiter.util.SpecialCharacter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,7 +20,7 @@ public class DelimiterImpl implements Delimiter {
     }
 
     private String toEscapeRegexIfEscapeDelimiter(String delimiterRegex) {
-        return EscapeCharacter.replaceAllEscape(delimiterRegex);
+        return SpecialCharacter.replaceAllEscape(delimiterRegex);
     }
 
     @Override

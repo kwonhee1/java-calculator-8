@@ -1,18 +1,18 @@
 package calculator.delimiter;
 
 import calculator.domain.delimiter.domain.DelimiterImpl;
-import calculator.domain.delimiter.EscapeCharacter;
+import calculator.domain.delimiter.util.SpecialCharacter;
 import java.util.List;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class EscapeCharacterTest {
+public class SpecialCharacterTest {
 
     @Test
     public void replaceTest() {
         String escapeCharacter = "\\123\\t12\\12";
 
-        String result = EscapeCharacter.ESCAPE.replaceEscapeToReplacement(escapeCharacter);
+        String result = SpecialCharacter.ESCAPE.replaceEscapeToReplacement(escapeCharacter);
 
         Assertions.assertThat(result).isEqualTo("\\\\123\\\\t12\\\\12");
     }
