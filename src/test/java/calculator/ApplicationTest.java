@@ -1,6 +1,7 @@
 package calculator;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;
@@ -22,6 +23,16 @@ class ApplicationTest extends NsTest {
             assertThatThrownBy(() -> runException("-1,2,3"))
                 .isInstanceOf(IllegalArgumentException.class)
         );
+    }
+
+    @Test
+    @DisplayName("\\n을 제외한 특수문자 처리 test")
+    public void all_special_character() {
+        String totalSpecialCharacter = "~!@#$%^&*(){}[]':;<>//`/-+*/|\\?_-";
+        assertSimpleTest(() -> {
+            run(String.format("//%s\\n11%s22",  totalSpecialCharacter, totalSpecialCharacter).toString());
+            assertThat(output()).contains("결과 : 33");
+        });
     }
 
     @Override

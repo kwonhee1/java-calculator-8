@@ -18,8 +18,10 @@ public enum SpecialCharacter {
     PULSE("+"),
     MULTIPLY("*"),
     VERTICAL_BAR("|"),
+    COMMA(","),
+    QUESTION_MARK("?"),
+    COLON(":"),
     CARET("^"),
-
     ESCAPE("\\"),
     ;
 

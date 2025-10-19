@@ -14,9 +14,7 @@ public class SplitService {
         if(!input.hasCustomDelimiter())
             return splitNumbersStrWithDelimiters(input.getNumbersStr(), defaultDelimiter);
 
-        List<Delimiter> delimiters = new ArrayList<>();
-        delimiters.addAll(defaultDelimiter);
-        delimiters.add(input.getCustomDelimiter());
+        List<Delimiter> delimiters = makeDelimiterList(defaultDelimiter, input.getCustomDelimiter());
 
         return splitNumbersStrWithDelimiters(input.getNumbersStr(), delimiters);
     }
@@ -30,6 +28,14 @@ public class SplitService {
             result = delimiter.split(result);
         }
         return result;
+    }
+
+    private List<Delimiter> makeDelimiterList(List<Delimiter> defaultDelimiters, Delimiter customDelimiter) {
+        List<Delimiter> delimiters = new ArrayList<>();
+        delimiters.add(customDelimiter);
+        delimiters.addAll(defaultDelimiters);
+
+        return delimiters;
     }
 
 }
