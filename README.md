@@ -14,15 +14,20 @@
 - 커스텀 구분자에서 "\n"은 제외한다 
     > "//\n\n12\n12" : 사람이 보아도 어디까지가 커스텀 구분자인지 알 수 없다
 
-## 고민 사항
-- \t, \\\\, \\. 등등 escape 문자에도 잘 작동하게 하는 방법은 무엇인지?
-- Numbers(domain class), Number(domain class) 생성자에서 앞 뒤로 비슷한 validate를 실행하는 것이 적절한가?
-- ExtractedInput (vo class)의 이름이 적절한가?
-- SplitService의 public splitNumbersStrDelimiters함수 (조립함수)가 service에 존재하는 것이 적절한가?
+## 노력한 부분
+- DDD구조를 지키기 위해 노력했습니다
+- domain별 단위 test를 작성하기 위해 노력했습니다
+- 커스텀 문자열에 특수문자가 들어왔을 때도 작동하기 위해 노렷했습니다
+    -  escape 문자로 인해 Matcher.replaceAll() 함수가 작동하지 않아서 replaceAll기능을 StringBuilder를 통해 구현
 
-## 고려 사항
+## 아쉬운 점
+- ExtractedInput (vo class)의 이름이 vo class의 의미를 잘 전달하지 못하는 것 같습니다
+- InputStr, NumberStr등 Str을 포함한 변수의 이름이 적절하지 못한 것 같습니다
+- test코드가 각각의 package에 잘 분리되지 않은 것 같습니다
+
+## 마지막 확인
 - [X] 각 함수가 하나의 작업을 하는지 확인
-- [ ] 각 함수와 class의 이름이 적절한지 확인
+- [X] 각 함수와 class의 이름이 적절한지 확인
 - [X] controller의 추상화 수준을 잘 고려했는지 확인
 - [X] 외부 주입이 필요한 부분을 모두 고려했는지 확인
-- [ ] 불필요한 import문이 남아있는지 확인
+- [X] 불필요한 import문이 남아있는지 확인
