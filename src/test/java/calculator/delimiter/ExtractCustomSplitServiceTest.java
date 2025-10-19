@@ -34,7 +34,7 @@ public class ExtractCustomSplitServiceTest {
         Assertions.assertEquals(onlySpace, getExtractCustomDelimiter(onlySpace));
         Assertions.assertEquals(onlySlash1, getExtractCustomDelimiter(onlySlash1));
         Assertions.assertEquals(onlySlash2, getExtractCustomDelimiter(onlySlash2));
-        Assertions.assertEquals(onlyDot, getExtractCustomDelimiter(onlyDot));
+        Assertions.assertEquals("\\.", getExtractCustomDelimiter(onlyDot));
         Assertions.assertThrows(IllegalArgumentException.class, ()->getExtractCustomDelimiter(nothing));
     }
 
