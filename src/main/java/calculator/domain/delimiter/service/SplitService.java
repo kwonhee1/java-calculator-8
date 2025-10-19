@@ -4,38 +4,24 @@ import calculator.domain.delimiter.domain.Delimiter;
 import calculator.domain.delimiter.vo.ExtractedInput;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class SplitService {
 
     public List<String> splitNumbersStrWithDelimiters(
-            ExtractedInput input,
-            List<Delimiter> defaultDelimiter
+            ExtractedInput extractedInput,
+            List<Delimiter> defaultDelimiters
     ) {
-        if(!input.hasCustomDelimiter())
-            return splitNumbersStrWithDelimiters(input.getNumbersStr(), defaultDelimiter);
+        List<String> result = List.of(extractedInput.getNumbersStr());
 
-        List<Delimiter> delimiters = makeDelimiterList(defaultDelimiter, input.getCustomDelimiter());
+        if(extractedInput.hasCustomDelimiter())
+            result = extractedInput.getCustomDelimiter().split(result);
 
-        return splitNumbersStrWithDelimiters(input.getNumbersStr(), delimiters);
-    }
-
-    private List<String> splitNumbersStrWithDelimiters(
-            String numbersStr,
-            List<Delimiter> delimiters
-    ) {
-        List<String> result = List.of(numbersStr);
-        for (Delimiter delimiter : delimiters) {
+        for (Delimiter delimiter : defaultDelimiters) {
             result = delimiter.split(result);
         }
+
         return result;
-    }
-
-    private List<Delimiter> makeDelimiterList(List<Delimiter> defaultDelimiters, Delimiter customDelimiter) {
-        List<Delimiter> delimiters = new ArrayList<>();
-        delimiters.add(customDelimiter);
-        delimiters.addAll(defaultDelimiters);
-
-        return delimiters;
     }
 
 }
